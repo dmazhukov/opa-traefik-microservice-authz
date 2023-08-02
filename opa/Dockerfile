@@ -1,7 +1,7 @@
-FROM openpolicyagent/opa:0.38.0
+FROM openpolicyagent/opa:0.55.0
 
-COPY policy.rego /root/policy.rego
+COPY --chown=1000:1000 policy.rego /policy.rego
 
 EXPOSE 8181
 
-CMD ["run", "--log-level=debug", "--server", "/root/policy.rego"]
+CMD ["run", "--log-level=debug", "--server", "/policy.rego"]
