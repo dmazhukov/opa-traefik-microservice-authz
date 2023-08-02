@@ -1,4 +1,4 @@
-FROM openpolicyagent/opa:0.18.0
+FROM openpolicyagent/opa:0.38.0
 
 COPY policy.rego /root/policy.rego
 

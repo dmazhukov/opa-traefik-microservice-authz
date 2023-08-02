@@ -8,7 +8,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const port = process.env.NODE_PORT || 3000
 
-const OPA_URL = 'http://opa:8181/v1/data/demo/opa'
+const OPA_URL = 'http://opa:8181/v1/data/authz'
 
 function indexHandler(req, res) {
   axios.post(OPA_URL, 
