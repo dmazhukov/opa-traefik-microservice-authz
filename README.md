@@ -53,17 +53,18 @@ export TOKEN2=`ruby -rjwt -e 'print JWT.encode({"appid":"app2","groups":["40c471
 Test token: eyJhbGciOiJub25lIn0.eyJhcHBpZCI6ImFwcDIiLCJncm91cHMiOlsiNDBjNDcxN2ItNzZiNi00ZGZhLThhMDktYzRhYmI2Mjg4MzdiIl0sImVtYWlsIjoidXNlcjJAdGtxbG0ub25taWNyb3NvZnQuY29tIn0.
 
 
-Request `api-1` with the token
+Request `api-1` with the `user1` token
 
 ```bash
 curl -H "OPA-Authorization: $TOKEN1" http://localhost:9000/api-1/
 ```
 
-Try requesting `api-2` with the same token
+Try requesting `api-1` with the `user2` token
 
 ```
-curl -H "OPA-Authorization: $TOKEN1" http://localhost:9000/api-2/
+curl -H "OPA-Authorization: $TOKEN2" http://localhost:9000/api-1/
 ```
+
 
 ## Whats inside?
 

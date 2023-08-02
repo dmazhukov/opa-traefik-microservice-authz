@@ -15,7 +15,7 @@ function indexHandler(req, res) {
     { 
       input: {
         method: req.headers['x-forwarded-method'],
-        token: (req.headers['authorization'] || 'eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.e30.').replace(/bearer\s+/i, ''),
+        token: (req.headers['opa-authorization'] || 'eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.e30.').replace(/bearer\s+/i, ''),
         path: req.headers['x-forwarded-uri']
       } 
     },
