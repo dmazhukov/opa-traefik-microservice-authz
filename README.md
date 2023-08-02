@@ -38,25 +38,32 @@ Request `api-1` without authorization
 curl http://localhost:9000/api-1/
 ```
 
-Generate a JWT for AuthZ
+Generate a JWT for AuthZ for app1
 
 ```bash
-export TOKEN=`ruby -rjwt -e 'print JWT.encode({"roles":["api-1-users"]}, nil, "none")'`
+export TOKEN1=`ruby -rjwt -e 'print JWT.encode({"appid":"app1","groups":["f55e7826-883e-48d2-842e-65c7d02e8ad1"],"email":"user1@tkqlm.onmicrosoft.com"}, nil, "none")'`
 ```
+Test token: eyJhbGciOiJub25lIn0.eyJhcHBpZCI6ImFwcDEiLCJncm91cHMiOlsiZjU1ZTc4MjYtODgzZS00OGQyLTg0MmUtNjVjN2QwMmU4YWQxIl0sImVtYWlsIjoidXNlcjFAdGtxbG0ub25taWNyb3NvZnQuY29tIn0.
+
+Generate a JWT for AuthZ for app2
+
+```bash
+export TOKEN2=`ruby -rjwt -e 'print JWT.encode({"appid":"app2","groups":["40c4717b-76b6-4dfa-8a09-c4abb628837b"],"email":"user2@tkqlm.onmicrosoft.com"}, nil, "none")'`
+```
+Test token: eyJhbGciOiJub25lIn0.eyJhcHBpZCI6ImFwcDIiLCJncm91cHMiOlsiNDBjNDcxN2ItNzZiNi00ZGZhLThhMDktYzRhYmI2Mjg4MzdiIl0sImVtYWlsIjoidXNlcjJAdGtxbG0ub25taWNyb3NvZnQuY29tIn0.
+
 
 Request `api-1` with the token
 
 ```bash
-curl -H "Authorization: $TOKEN" http://localhost:9000/api-1/
+curl -H "OPA-Authorization: $TOKEN1" http://localhost:9000/api-1/
 ```
 
 Try requesting `api-2` with the same token
 
 ```
-curl -H "Authorization: $TOKEN" http://localhost:9000/api-2/
+curl -H "OPA-Authorization: $TOKEN1" http://localhost:9000/api-2/
 ```
-
-> **NOTE:** The JWT generated above is for testing purpose only and does not include any cryptographic signing. This is NOT suitable for real-life use as the token can be easily forged and authorization rules bypassed. Ensure JWT tokens are always signed and verifiable.
 
 ## Whats inside?
 
