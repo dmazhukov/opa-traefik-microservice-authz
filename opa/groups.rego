@@ -1,10 +1,16 @@
 package authz
 import future.keywords.in
+import future.keywords.if
 
 default blocked = false
 
 blocked_groups_app1 = ["group2", "group3"]
 blocked_groups_app2 = ["group1"]
+
+# check if token empty or invalid
+blocked {
+	not token.payload
+}
 
 blocked {
   print("Entering block by group for app1")
