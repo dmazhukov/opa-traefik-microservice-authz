@@ -20,5 +20,5 @@ blocked {
 
 # Token verification is required
 token = {"payload": payload} {
-  [header, payload, signature] := io.jwt.decode(input.token)
+  [_, payload, _] := io.jwt.decode(input.token)
 }
