@@ -6,11 +6,12 @@ const axios = require('axios')
 
 const app = express()
 const bodyParser = require('body-parser')
-const port = process.env.NODE_PORT || 3000
+const port = process.env.NODE_PORT || 8180
 
-const OPA_URL = 'http://opa:8181/v1/data/authz'
+const OPA_URL = 'http://localhost:8181/v1/data/authz'
 
 function indexHandler(req, res) {
+  console.log(req)
   axios.post(OPA_URL, 
     { 
       input: {
@@ -29,6 +30,7 @@ function indexHandler(req, res) {
     }
   })
   .catch(function (err) {
+    console.log(err)
     res.status(500).json({ error: `Error in evaluating request with OPA: ${err.message}`})
   })
 }

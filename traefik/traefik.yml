@@ -1,5 +1,8 @@
 api:
   insecure: true
+log:
+  level: "DEBUG"
+  filepath: "/var/log/traefik.log"
 providers:
   file:
     filename: /etc/traefik/dynamic.yml
