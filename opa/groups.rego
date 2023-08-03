@@ -8,12 +8,17 @@ default invalid_token = false
 blocked_groups_app1 = ["group2", "group3"]
 blocked_groups_app2 = ["group1"]
 
+missing_token {
+	print("check if token exists")
+    not token.payload
+}
+
 invalid_token {
 	print("check if token valid")
-    not token.payload
-    not token.payload.appid
-    not token.payload.groups
     print("token payload=", token.payload)
+    not token.payload.groups
+    not token.payload.appid
+
 }
 
 blocked_by_group {
@@ -31,6 +36,7 @@ blocked_by_appid {
 
 blocked := false {
     not invalid_token
+    not missing_token
     not blocked_by_group
     not blocked_by_appid
 }
