@@ -8,6 +8,7 @@ jobs:
     runs-on: centos:9
     steps:
       - name: Install pkg
+        uses: ./
         with:
           command: yum update -y && yum install npm && npm i -g pkg
       - name: Checkout
