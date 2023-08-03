@@ -7,10 +7,10 @@ blocked_groups_app1 = ["group2", "group3"]
 blocked_groups_app2 = ["group1"]
 
 blocked {
-  print("Entering block by group")
+  print("Entering block by group for app1")
   print("input=", input)
 	some group in token.payload.groups    	
-  token.payload.blocked_groups[_] == group
+  blocked_groups_app1[_] == group
 }
 
 blocked {
