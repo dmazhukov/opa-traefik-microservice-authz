@@ -22,7 +22,7 @@ function indexHandler(req, res) {
     },
     { headers: { 'Content-Type': 'application/json' } })
   .then(function (resp) {
-    if ((resp.status === 200) && (resp.data.result.allow === true)) {
+    if ((resp.status === 200) && (resp.data.result.blocked === false)) {
       res.status(200).send('')
     }
     else {
