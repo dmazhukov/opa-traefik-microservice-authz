@@ -1,0 +1,23 @@
+name: package-nodejs-middleware
+on:
+  push:
+    branches:
+      - main
+jobs:
+  package-node-binary:
+    runs-on: centos:9
+    steps:
+      - name: Install pkg
+        with:
+          command: yum update -y && yum install npm && npm i -g pkg
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Package node binary
+        uses: lando/pkg-action@v2
+        with:
+          entrypoint: traefik-middlewares/auth-opa/app.js
+          arch: amd64
+          config: package.json
+          node-version: node16
+          os: linux
+          upload: true
