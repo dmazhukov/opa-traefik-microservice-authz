@@ -8,7 +8,7 @@ sudo cp -f nginx.conf /etc/nginx/nginx.conf
 sudo mkdir -p /usr/share/nginx/html/api-1
 sudo cp -f apps/api-1/index.html /usr/share/nginx/html/api-1/
 sudo mkdir -p /usr/share/nginx/html/api-2
-sudo cp -f apps/api-1/index.html /usr/share/nginx/html/api-2/
+sudo cp -f apps/api-2/index.html /usr/share/nginx/html/api-2/
 sudo cp -f apps/web/index.html /usr/share/nginx/html/index.html
 sudo nginx
 
