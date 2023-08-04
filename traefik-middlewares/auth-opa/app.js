@@ -29,12 +29,12 @@ function indexHandler(req, res) {
       res.status(200).send('')
     }
     else {
-      res.status(403).send('Your are not authorized to perform this action')
+      res.status(403).send('You are not authorized to perform this action.')
     }
   })
   .catch(function (err) {
     console.log(err)
-    res.status(500).json({ error: `Error in evaluating request with OPA: ${err.message}`})
+    res.status(403).json({ error: `You are not authorized to perform this action. ${err.message}`})
   })
 }
 
