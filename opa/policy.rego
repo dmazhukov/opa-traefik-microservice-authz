@@ -6,6 +6,19 @@ default allow = false
 allowed_users_app1 = ["user1@tkqlm.onmicrosoft.com"]
 allowed_users_app2 = ["user2@tkqlm.onmicrosoft.com"]
 
+missing_token {
+	print("check if token exists")
+    not token.payload
+}
+
+invalid_token {
+	print("check if token valid")
+    print("token payload=", token.payload)
+    not token.payload.groups
+    not token.payload.appid
+    not token.payload.email
+}
+
 allow {
 # Allow access to groups and specific email for app1
 # test token: eyJhbGciOiJub25lIn0.eyJhcHBpZCI6ImFwcDEiLCJncm91cHMiOlsiZjU1ZTc4MjYtODgzZS00OGQyLTg0MmUtNjVjN2QwMmU4YWQxIl0sImVtYWlsIjoidXNlcjFAdGtxbG0ub25taWNyb3NvZnQuY29tIn0.
@@ -41,5 +54,5 @@ allow  {
 
 # Token verification is required
 token = {"payload": payload} {
-  [header, payload, signature] := io.jwt.decode(input.token)
+  [_, payload, _] := io.jwt.decode(input.token)
 }

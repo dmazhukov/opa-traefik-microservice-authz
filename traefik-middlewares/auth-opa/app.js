@@ -25,6 +25,9 @@ function indexHandler(req, res) {
     if ((resp.status === 200) && (resp.data.result.blocked === false)) {
       res.status(200).send('')
     }
+    if ((resp.status === 200) && (resp.data.result.allow === true)) {
+      res.status(200).send('')
+    }
     else {
       res.status(403).send('Your are not authorized to perform this action')
     }
