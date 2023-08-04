@@ -14,7 +14,7 @@ sudo nginx
 
 # sudo traefik-middlewares/auth-opa/app&
 
-opa run --log-level=debug --server opa/groups.rego&
+opa run --log-level=debug --server opa/users.rego&
 
 sudo mkdir -p /etc/traefik
 sudo cp -f traefik/traefik.yml /etc/traefik/

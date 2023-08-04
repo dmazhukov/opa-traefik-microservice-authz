@@ -22,10 +22,10 @@ function indexHandler(req, res) {
     },
     { headers: { 'Content-Type': 'application/json' } })
   .then(function (resp) {
-    if ((resp.status === 200) && (resp.data.result.blocked === false)) {
+    if ((resp.status === 200) && (resp.data.result.allow === true)) {
       res.status(200).send('')
     }
-    if ((resp.status === 200) && (resp.data.result.allow === true)) {
+    else if ((resp.status === 200) && (resp.data.result.blocked === false)) {
       res.status(200).send('')
     }
     else {
