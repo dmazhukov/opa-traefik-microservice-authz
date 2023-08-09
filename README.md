@@ -38,31 +38,30 @@ Request `api-1` without authorization
 curl http://localhost:9000/api-1/
 ```
 
-Generate a JWT for AuthZ for app1
+Generate a JWT for AuthZ for user1
 
 ```bash
-export TOKEN1=`ruby -rjwt -e 'print JWT.encode({"appid":"app1","groups":["f55e7826-883e-48d2-842e-65c7d02e8ad1"],"email":"user1@tkqlm.onmicrosoft.com"}, nil, "none")'`
+export TOKEN1=`ruby -rjwt -e 'print JWT.encode({"email":"user1@tkqlm.onmicrosoft.com"}, nil, "none")'`
 ```
-Test token: eyJhbGciOiJub25lIn0.eyJhcHBpZCI6ImFwcDEiLCJncm91cHMiOlsiZjU1ZTc4MjYtODgzZS00OGQyLTg0MmUtNjVjN2QwMmU4YWQxIl0sImVtYWlsIjoidXNlcjFAdGtxbG0ub25taWNyb3NvZnQuY29tIn0.
+Test token: eyJhbGciOiJub25lIn0.eyJlbWFpbCI6InVzZXIxQHRrcWxtLm9ubWljcm9zb2Z0LmNvbSJ9.
 
-Generate a JWT for AuthZ for app2
+Generate a JWT for AuthZ for user2
 
 ```bash
-export TOKEN2=`ruby -rjwt -e 'print JWT.encode({"appid":"app2","groups":["40c4717b-76b6-4dfa-8a09-c4abb628837b"],"email":"user2@tkqlm.onmicrosoft.com"}, nil, "none")'`
+export TOKEN2=`ruby -rjwt -e 'print JWT.encode({"email":"user2@tkqlm.onmicrosoft.com"}, nil, "none")'`
 ```
-Test token: eyJhbGciOiJub25lIn0.eyJhcHBpZCI6ImFwcDIiLCJncm91cHMiOlsiNDBjNDcxN2ItNzZiNi00ZGZhLThhMDktYzRhYmI2Mjg4MzdiIl0sImVtYWlsIjoidXNlcjJAdGtxbG0ub25taWNyb3NvZnQuY29tIn0.
-
+Test token: eyJhbGciOiJub25lIn0.eyJlbWFpbCI6InVzZXIyQHRrcWxtLm9ubWljcm9zb2Z0LmNvbSJ9.
 
 Request `api-1` with the `user1` token
 
 ```bash
-curl -H "OPA-Authorization: $TOKEN1" http://localhost:9000/api-1/
+curl -H "OPA-Authorization: $TOKEN1" http://localhost:88/api-1/
 ```
 
 Try requesting `api-1` with the `user2` token
 
-```
-curl -H "OPA-Authorization: $TOKEN2" http://localhost:9000/api-1/
+```bash
+curl -H "OPA-Authorization: $TOKEN2" http://localhost:88/api-1/
 ```
 
 
