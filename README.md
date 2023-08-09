@@ -35,7 +35,7 @@ docker-compose up
 Request `api-1` without authorization
 
 ```bash
-curl http://localhost:9000/api-1/
+curl http://localhost:88/api-1/
 ```
 
 Generate a JWT for AuthZ for user1
